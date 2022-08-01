@@ -18,10 +18,16 @@
 
 7. How can we optimize or increase the speed of a MySQL select query?
 
+   - We should use column names instead of \* in `select` statement.
+   - We should avoid nest views from `select` query, it would retrieve more data than it is needed.
+   - We should avoic using `or` in join condition
+
 8. How many ways can we get the value of current session id?
    We can use `session_id()` to get or set the current session id.
 
 9. How can we store session into database?
+
+   - We can create `session` table in database and store the session with hashed into the table
 
 10. What are DDoS, XSS, SQL injection attack. How can we prevent the attacks?
 
@@ -42,3 +48,9 @@
     - We should only allow `localhost` connection to the database, so people cannot connect to our database directly from the internet (they can only interact with the database through our application)
 
 13. To create a function to extract all images from an article, and download.
+
+    require_once('/function/simple_html_dom.php');
+    $html = file_get_html('https://www.wikipedia.org/');
+      foreach($html->find('img') as $element) {
+    echo $element->src, "n";
+    }
